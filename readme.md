@@ -4,12 +4,13 @@
 
  * game has an Astronaut that moves horizontal
  * space Trash is falling randomly from the sky
- * when trash hits the ground, or the astronaut game is over
+ * when trash hits the astronaut game is over
  * if Astronaut dodges 10 Trash Items, he win
 
 ## Backlog
 
  * astronaut has an Laser to dematerialize the trash
+ * if trash hits the ground, Astronaut is dead
  * if astronaut shoots 10 items, level up
  * add levels with increasing speed and difficulty
  * add scoreboard
@@ -63,7 +64,6 @@ Definition of the different states and their transition
  * obstacles - addLoop
  * obstacles - moveObstacles
  * obstacles - checkCollision1Astronaut
- * obstacles - checkCollision1Floor
 
  * game - gameOver
  * game - addEventListener
@@ -72,8 +72,10 @@ Definition of the different states and their transition
 ## Links
 
 ### Trello
+https://trello.com/b/F0FiM3mi/moontrash
 
 ### Git
 https://github.com/balthazarbb/M1--Space-Trash.git
+
 ### Slides
 
