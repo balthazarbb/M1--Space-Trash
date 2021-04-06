@@ -34,14 +34,14 @@ let obstArr = [
 let isArrowLeft = false, isArrowRight = false
 
 let isGameOver = false;
-
-let intervalId = 0
+// ?
+let intervalId = 0 
 
 // functions that draws all the elements
 function startGame(){
     // other DOM things might be here
-    //add bg image 
-    animate() // main animate function
+    // main animate function
+    animate() 
     // scores might be here
 }
 
