@@ -1,7 +1,9 @@
 // DOM elements here
 let canvas = document.querySelector('#gameScreen');
-let startBtn =document.querySelector("#start");
+let startScreen = document.querySelector("#splash-screen");
+let startBtn = document.querySelector("#start")
 let restartBtn = document.querySelector("#restart");
+let winScreen = document.querySelector('#youWon')
 
 // getting the paintbrush
 let ctx = canvas.getContext("2d");
@@ -22,6 +24,11 @@ let astroX =  0, astroY = 420, astroWidth = 50, astroHeigth = 80;
 let obstacle = new Image();
 obstacle.src ='./space-pics/Foguete.png';
 
+let snoopy = new Image (50, 50);
+snoopy.src = './space-pics/snoopy.png';
+let snoopyX = canvas.width - 100, snoopyY= 0;
+
+
 //number of space trash
 let obstArr = [
     {x: 100, y: -80, speed: 4},
@@ -34,8 +41,13 @@ let obstArr = [
 let isArrowLeft = false, isArrowRight = false
 
 let isGameOver = false;
-// ?
+
+let isWinScreen = false;
+
+// img interval
 let intervalId = 0 
+
+
 
 // functions that draws all the elements
 function startGame(){
@@ -44,7 +56,7 @@ function startGame(){
     animate() 
     // scores might be here
 }
-
+//resets positions
 function restart (){
     isGameOver = false
     canvas.style.display = "";
@@ -53,7 +65,10 @@ function restart (){
         {x: 100, y: -80, speed: 4},
         {x: 200, y: -70, speed: 3},
         {x: 150, y: 0, speed: 2},
-        {x: 90, y: -50, speed: 4}]
+        {x: 90, y: -50, speed: 4} 
+    ]
+    snoopyX = canvas.width - 100, snoopyY= 0;
+    isWinScreen = false
     animate()
 }
 
@@ -83,27 +98,26 @@ function animate(){
         astroX = astroX -5
     } 
     
-
-
     // here are all drawings
     ctx.drawImage (bg, 0, 0)
     ctx.drawImage (floor, 0 , canvas.height - floor.height, canvas.width, floor.height)
     ctx.drawImage (astro, astroX , astroY, astroWidth, astroHeigth)
+    ctx.drawImage (snoopy, snoopyX, snoopyY, snoopy.width, snoopy.height)
     
+    //Snoopy falling
+    snoopyY = snoopyY + 0.5;
+
     //for loop falling obstacles from sky
     for (let i=0; i < obstArr.length; i++){
         ctx.drawImage(obstacle, obstArr[i].x, obstArr[i].y, obstacle.width, obstacle.height)
         obstArr[i].y = obstArr[i].y  + obstArr[i].speed
      
         // infinite loop
-        // collision detect
+        // collision detect obstacles
         if (astroX < obstArr[i].x + obstacle.width &&
             astroX + astroWidth > obstArr[i].x &&
             astroY < obstArr[i].y + obstacle.height &&
             astroY + astroHeigth > obstArr[i].y) {
-                console.log(obstArr[i].y);
-                console.log(obstacle.height);
-                console.log(astroY);
                 isGameOver = true
             }
             
@@ -113,15 +127,32 @@ function animate(){
         }
     }
 
-
+        // Snoopy collision detect
+        if (astroX < snoopyX + snoopy.width &&
+        astroX + astroWidth > snoopyX &&
+        astroY < snoopyY + snoopy.height &&
+        astroY + astroHeigth > snoopyY) {
+            isWinScreen = true
+        }
 
     // Here for checking if game is over or if game continues
     if (isGameOver){
         cancelAnimationFrame(intervalId);
         canvas.style.display = "none";
-        restartBtn.style.display="block";
+        restartBtn.style.display ="block";
+       // winScreen.style.display ="none";
     }   else {
         intervalId = requestAnimationFrame(animate);
+    }
+    // checking if won the game
+    if (isWinScreen){
+        cancelAnimationFrame(intervalId);
+        canvas.style.display = "none";
+        restartBtn.style.display = "block";
+        startScreen.style.display = "none"
+        winScreen.style.display = "block"
+    }   else {
+      //  intervalId = requestAnimationFrame(animate);
     }
 }
 
@@ -129,22 +160,26 @@ function animate(){
  window.addEventListener('load', () => {
     canvas.style.display = 'none'
     restartBtn.style.display = 'none'
+    winScreen.style.display = "none"
  
     startBtn.addEventListener('click', () => {
         // start()
         // hide the start button
-        startBtn.style.display = 'none'
+        startScreen.style.display = 'none'
         // show the canvas
         canvas.style.display = 'block'
-        startGame()
         restartBtn.style.display = 'none'
+        winScreen.style.display = "none"
+        startGame()
+
         // start the game logic
     })
 
     restartBtn.addEventListener('click', () => {
-        startBtn.style.display = 'none'
+        startScreen.style.display = 'none'
         canvas.style.display = 'block'
         restartBtn.style.display = 'none'
+       // winScreen.style.display = "none"
         restart()
     })
 })
