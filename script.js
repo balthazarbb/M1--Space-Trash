@@ -197,6 +197,7 @@ function animate(){
         restartBtn.style.display = "none";
         winScreen.style.display = "none";
         gameOver.style.display = "none";
+        audio1.pause()
         restart()
     })
     restartBtn1.addEventListener('click', () => {
