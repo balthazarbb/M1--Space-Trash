@@ -7,7 +7,7 @@ let winScreen = document.querySelector('#youWon');
 let gameOver = document.querySelector('#gameOver');
 let restartBtn1 = document.querySelector("#restart1");
 let audio = new Audio("./space-pics/through space.ogg");
-
+let audio1 = new Audio("./space-pics/oh no oh no oh no no no song - capone.mp3")
 // getting the paintbrush
 let ctx = canvas.getContext("2d");
 canvas.style.border= "2px solid black";
@@ -152,6 +152,8 @@ function animate(){
         winScreen.style.display = "none"
         gameOver.style.display ="block"
         audio.pause()
+        audio1.load()
+        audio1.play()
     }   else {
         intervalId = requestAnimationFrame(animate);
     }
