@@ -1,9 +1,11 @@
 // DOM elements here
 let canvas = document.querySelector('#gameScreen');
 let startScreen = document.querySelector("#splash-screen");
-let startBtn = document.querySelector("#start")
+let startBtn = document.querySelector("#start");
 let restartBtn = document.querySelector("#restart");
-let winScreen = document.querySelector('#youWon')
+let winScreen = document.querySelector('#youWon');
+let gameOver = document.querySelector('#gameOver');
+let restartBtn1 = document.querySelector("#restart1");
 
 // getting the paintbrush
 let ctx = canvas.getContext("2d");
@@ -42,7 +44,7 @@ let isArrowLeft = false, isArrowRight = false
 
 let isGameOver = false;
 
-let iswinScreen = false;
+let isWinScreen = false;
 
 // img interval
 let intervalId = 0 
@@ -139,8 +141,10 @@ function animate(){
     if (isGameOver){
         cancelAnimationFrame(intervalId);
         canvas.style.display = "none";
-        restartBtn.style.display ="block";
+        startScreen.style.display = "none"
+        restartBtn.style.display ="";
         winScreen.style.display = "none"
+        gameOver.style.display ="block"
     }   else {
         intervalId = requestAnimationFrame(animate);
     }
@@ -148,39 +152,49 @@ function animate(){
     if (isWinScreen){
         cancelAnimationFrame(intervalId);
         canvas.style.display = "none";
-        restartBtn.style.display = "block";
-        startScreen.style.display = "none"
-        winScreen.style.display = "block"
-    }   else {
-      //  intervalId = requestAnimationFrame(animate);
-    }
+        restartBtn1.style.display = "";
+        startScreen.style.display = "none";
+        winScreen.style.display = "block";
+        gameOver.style.display = "none";
+    }   
 }
+
 
  //Everything begins here
  window.addEventListener('load', () => {
-    canvas.style.display = 'none'
-    restartBtn.style.display = 'none'
-    winScreen.style.display = "none"
+    canvas.style.display = 'none';
+    restartBtn.style.display = 'none';
+    winScreen.style.display = "none";
+    gameOver.style.display = "none";
  
     startBtn.addEventListener('click', () => {
         // start()
         // hide the start button
-        startScreen.style.display = 'none'
+        startScreen.style.display = "none";
         // show the canvas
-        canvas.style.display = 'block'
-        restartBtn.style.display = 'none'
-        winScreen.style.display = "none"
+        canvas.style.display = "block";
+        restartBtn1.style.display = "none";
+        winScreen.style.display = "none";
+        gameOver.style.display = "none";
         startGame()
 
         // start the game logic
     })
 
     restartBtn.addEventListener('click', () => {
-        startScreen.style.display = 'none'
-        canvas.style.display = 'block'
-        restartBtn.style.display = 'none'
-        winScreen.style.display = "none"
-       // winScreen.style.display = "none"
+        startScreen.style.display = "none";
+        canvas.style.display = "block";
+        restartBtn.style.display = "none";
+        winScreen.style.display = "none";
+        gameOver.style.display = "none";
         restart()
     })
+    restartBtn1.addEventListener('click', () => {
+        startScreen.style.display = "none";
+        canvas.style.display = "block";
+        restartBtn.style.display = "none";
+        winScreen.style.display = "none";
+        gameOver.style.display = "none";
+        restart()
+})
 })

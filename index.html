@@ -13,22 +13,30 @@
 <div>  
     <canvas id = "gameScreen" class="canvas" width = "450" height = "500" ></canvas>
         <div id="splash-screen" class = "splash">
-
-        <h1>SPACE-TRASH</h1>
+        <br/>
+        <h1>* SPACE-TRASH *</h1>
         <h3>be part of elon´s mars colony and collect the snoopy coins!<br/>
              use left and right arrow key to control the astronaut!<br/>
              but watch out for the space trash!!!!</h3>
         <p>use right and left arrow to move astronaut horizontaly!<br/>
             but dodge the space-trash and catch the snoopy coin to win!</p>
-<span>
-    <button id="start" class ="button">Start Mission</button></span>
+    
+    <button id="start" class ="strtButton">Start Mission</button>
     </div>
-    <div>
-    <button id="restart" class="restartbtn">New Mission</button>
+
+    <div  id="gameOver" class="looseScreen">
+        <br/>
+        <h1>!OH NOOOOOOO!</h1>
+        <h2>try it again!! we need your help!!</h2>
+        <button id="restart"  class="newMission">New Mission</button>
     </div>
-    <div id = "youWon" class="youwon">
+    
+    <div id = "youWon" class="winner">
+        <br/>
         <h1>!!!YOU WON!!!</h1>
-        <h3>!please help us on anorther mission!</h3>
+        <h2>papa Elon is gonna be so proud:)</h2>
+        <h2>! please help us on anorther mission !</h2>  
+        <button id="restart1"  class="newMission">New Mission</button>
     </div>
    
     <!-- connecting your js files -->

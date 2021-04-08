@@ -3,9 +3,8 @@ body{
   font-family: "Press Start 2P";
   color: white;
   background-color: rgb(15, 10, 61);
-
-
 }
+
 h1 {
 font-size: 90px;
 }
@@ -20,38 +19,51 @@ font-size: 90px;
 }
 
 .splash{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    text-align: center;
-
-}
-
-
-.youwon{
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
   text-align: center;
 }
-.button{
-  background-color: #E8562A;
-  border: turquoise;
-  font-size: 24px;
-}
-.restartbtn{
+
+.winner{
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-content: center;
-  margin-top: center;
-  margin-left: center;
-  width: 70px; 
-  height: 30px; 
   text-align: center;
-  border: gray;
-  background-color: #E8562A;
-  color: #fff;
-  cursor: pointer;
-  font-weight: bold;
+
 }
+
+.strtButton{
+  background-color: #E8562A;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.newMission{
+  font-size: 24px;
+  cursor: pointer;
+  background-color: #E8562A;
+  color: white;
+  align-items: center;
+}
+
+.restart1{
+  font-size: 24px;
+  cursor: pointer;
+  background-color: #E8562A;
+  color: white;
+
+}
+
+.looseScreen{
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: rgb(15, 10, 61);
+  color: #E8562A;
+
+}
+
