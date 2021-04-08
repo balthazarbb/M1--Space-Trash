@@ -7,14 +7,19 @@ let winScreen = document.querySelector('#youWon');
 let gameOver = document.querySelector('#gameOver');
 let restartBtn1 = document.querySelector("#restart1");
 
-// loading sound files
-let audio = new Audio("./space-pics/through space.ogg");
+// gameScreen sound
+let audio = new Audio("./space-pics/Spy.mp3");
 // set audio volume
 audio.volume = 0.08;
+// gamOverScreen sound
 let audio1 = new Audio("./space-pics/oh no oh no oh no no no song - capone.mp3")
 audio1.volume = 0.07;
-let audio2 =new Audio("./space-pics/cheer-gradeschoolyay-sound-effect-49926758.mp3")
+// winning sound
+let audio2 = new Audio("./space-pics/cheer-gradeschoolyay-sound-effect-49926758.mp3")
 audio2.volume = 0.07;
+// startScreen audio
+let audio3 = new Audio("./space-pics/the evil lord kynos.ogg")
+audio3.volume = 0.07;
 
 // getting the paintbrush
 let ctx = canvas.getContext("2d");
@@ -35,14 +40,19 @@ let astroX =  0, astroY = 420, astroWidth = 50, astroHeigth = 80;
 let obstacle = new Image();
 obstacle.src ='./space-pics/Foguete.png';
 
+let hulk = new Image (50,50);
+hulk.src = './space-pics/hulk.png';
+let hulkX = canvas.width -100, hulkY = 400; 
+
 let snoopy = new Image (50, 50);
 snoopy.src = './space-pics/snoopy.png';
-let snoopyX = canvas.width - 200, snoopyY= 0;
+let snoopyX = canvas.width - 200, snoopyY = 0;
+
+
 
 //number of space trash
 let obstArr = [
     {x: 100, y: -80, speed: 4},
-    {x: 250, y: -40, speed: 4},
     {x: 200, y: -70, speed: 3},
     {x: 150, y: 0, speed: 2},
     {x: 90, y: -50, speed: 4},
@@ -51,9 +61,7 @@ let obstArr = [
 
 // starting global variables
 let isArrowLeft = false, isArrowRight = false
-
 let isGameOver = false;
-
 let isWinScreen = false;
 
 // img interval
@@ -66,6 +74,7 @@ function startGame(){
     animate() 
     // set audio for gameScreen
     audio.play()
+    //set audio for StartScreen
     // loops the audio
     audio.loop = true
 }
@@ -80,10 +89,10 @@ function restart (){
         {x: 100, y: -80, speed: 4},
         {x: 200, y: -70, speed: 3},
         {x: 150, y: 0, speed: 2},
-        {x: 90, y: -50, speed: 4} 
+        {x: 90, y: -50, speed: 4} ,
     ]
-    snoopyX = canvas.width - 100, snoopyY= 0;
-    // Music during gamePlay
+    snoopyX = canvas.width - 200, snoopyY= 0;
+    hulkX = canvas.width -100, hulkY = 400;
     audio.load()
     audio.play()
     animate()
@@ -120,10 +129,16 @@ function animate(){
     ctx.drawImage (bg, 0, 0)
     ctx.drawImage (floor, 0 , canvas.height - floor.height, canvas.width, floor.height)
     ctx.drawImage (astro, astroX , astroY, astroWidth, astroHeigth)
+    ctx.drawImage (hulk, hulkX, hulkY, hulk.width, hulk.height)
     ctx.drawImage (snoopy, snoopyX, snoopyY, snoopy.width, snoopy.height)
     
-    //Snoopys falling speed
+    // hulk rising speed
+    hulkY = hulkY -1;
+
+    // Snoopys falling speed
     snoopyY = snoopyY + 0.8;
+
+
 
     //for loop falling obstacles from sky
     for (let i=0; i < obstArr.length; i++){
@@ -232,7 +247,7 @@ function animate(){
         winScreen.style.display = "none";
         // hide gameOverScreen
         gameOver.style.display = "none";
-        // pause audio1 & audio2
+        // pause audio
         audio1.pause()
         audio2.pause()
         // invoke restart
