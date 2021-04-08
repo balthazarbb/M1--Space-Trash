@@ -6,6 +6,7 @@ let restartBtn = document.querySelector("#restart");
 let winScreen = document.querySelector('#youWon');
 let gameOver = document.querySelector('#gameOver');
 let restartBtn1 = document.querySelector("#restart1");
+let audio = new Audio("./space-pics/through space.ogg");
 
 // getting the paintbrush
 let ctx = canvas.getContext("2d");
@@ -57,6 +58,8 @@ function startGame(){
     // main animate function
     animate() 
     // scores might be here
+    audio.play()
+    audio.loop = true
 }
 //resets positions
 function restart (){
@@ -71,6 +74,9 @@ function restart (){
         {x: 90, y: -50, speed: 4} 
     ]
     snoopyX = canvas.width - 100, snoopyY= 0;
+    
+    audio.load()
+    audio.play()
     animate()
 }
 
@@ -145,6 +151,7 @@ function animate(){
         restartBtn.style.display ="";
         winScreen.style.display = "none"
         gameOver.style.display ="block"
+        audio.pause()
     }   else {
         intervalId = requestAnimationFrame(animate);
     }
@@ -156,6 +163,7 @@ function animate(){
         startScreen.style.display = "none";
         winScreen.style.display = "block";
         gameOver.style.display = "none";
+        audio.pause()
     }   
 }
 
