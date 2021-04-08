@@ -12,9 +12,9 @@ let audio = new Audio("./space-pics/through space.ogg");
 // set audio volume
 audio.volume = 0.08;
 let audio1 = new Audio("./space-pics/oh no oh no oh no no no song - capone.mp3")
-audio1.volume = 0.05;
+audio1.volume = 0.07;
 let audio2 =new Audio("./space-pics/cheer-gradeschoolyay-sound-effect-49926758.mp3")
-audio2.volume = 0.08;
+audio2.volume = 0.07;
 
 // getting the paintbrush
 let ctx = canvas.getContext("2d");
@@ -42,9 +42,11 @@ let snoopyX = canvas.width - 200, snoopyY= 0;
 //number of space trash
 let obstArr = [
     {x: 100, y: -80, speed: 4},
+    {x: 250, y: -40, speed: 4},
     {x: 200, y: -70, speed: 3},
     {x: 150, y: 0, speed: 2},
-    {x: 90, y: -50, speed: 4}
+    {x: 90, y: -50, speed: 4},
+    {x: 250, y: -70, speed: 3}
 ]
 
 // starting global variables
@@ -121,7 +123,7 @@ function animate(){
     ctx.drawImage (snoopy, snoopyX, snoopyY, snoopy.width, snoopy.height)
     
     //Snoopys falling speed
-    snoopyY = snoopyY + 0.5;
+    snoopyY = snoopyY + 0.8;
 
     //for loop falling obstacles from sky
     for (let i=0; i < obstArr.length; i++){
@@ -230,8 +232,9 @@ function animate(){
         winScreen.style.display = "none";
         // hide gameOverScreen
         gameOver.style.display = "none";
-        // pause audio1
+        // pause audio1 & audio2
         audio1.pause()
+        audio2.pause()
         // invoke restart
         restart()
     })
@@ -247,6 +250,7 @@ function animate(){
         winScreen.style.display = "none";
         // hide gameOverScreen
         gameOver.style.display = "none";
+        audio2.pause()
         // invoke restart
         restart()
 })
