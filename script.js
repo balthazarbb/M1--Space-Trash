@@ -26,7 +26,7 @@ obstacle.src ='./space-pics/Foguete.png';
 
 let snoopy = new Image (50, 50);
 snoopy.src = './space-pics/snoopy.png';
-let snoopyX = canvas.width - 100, snoopyY= 0;
+let snoopyX = canvas.width - 200, snoopyY= 0;
 
 
 //number of space trash
@@ -42,7 +42,7 @@ let isArrowLeft = false, isArrowRight = false
 
 let isGameOver = false;
 
-let isWinScreen = false;
+let iswinScreen = false;
 
 // img interval
 let intervalId = 0 
@@ -59,6 +59,7 @@ function startGame(){
 //resets positions
 function restart (){
     isGameOver = false
+    isWinScreen = false
     canvas.style.display = "";
     astroX =  0, astroY = 420;
     obstArr = [
@@ -68,7 +69,6 @@ function restart (){
         {x: 90, y: -50, speed: 4} 
     ]
     snoopyX = canvas.width - 100, snoopyY= 0;
-    isWinScreen = false
     animate()
 }
 
@@ -140,7 +140,7 @@ function animate(){
         cancelAnimationFrame(intervalId);
         canvas.style.display = "none";
         restartBtn.style.display ="block";
-       // winScreen.style.display ="none";
+        winScreen.style.display = "none"
     }   else {
         intervalId = requestAnimationFrame(animate);
     }
@@ -179,8 +179,8 @@ function animate(){
         startScreen.style.display = 'none'
         canvas.style.display = 'block'
         restartBtn.style.display = 'none'
+        winScreen.style.display = "none"
        // winScreen.style.display = "none"
         restart()
     })
 })
-        

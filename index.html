@@ -1,25 +1,34 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPACE-TRASH</title>
+
+<link rel="stylesheet" href="style.css">    
 </head>
 <body>
-        
-    <canvas id = "gameScreen" width = "280" height = "500" ></canvas>
+    <div>
+    <canvas id = "gameScreen" class="canvas" width = "450" height = "500" ></canvas>
+        <div id="splash-screen" class = "splash">
+
         <h1>SPACE-TRASH</h1>
+        <h3>be part of elon´s mars colony and collect the snoopy coins!<br/>
+             use left and right arrow key to control the astronaut!<br/>
+             but watch out for the space trash!!!!</h3>
+        <p>use right and left arrow to move astronaut horizontaly!<br/>
+            but dodge the space-trash and catch the snoopy coin to win!</p>
+<span>
+    <button id="start" class ="button">Start Mission</button></span>
     </div>
-    <div id="splash-screen">
-        <button id="start">Start Game</button>
-    </div>
-    <button id="restart">Restart Game</button>
-    <div id = "youWon">
+    <button id="restart" class="restartbtn">New Mission</button>
+    <div id = "youWon" class="youwon">
         <h1>!!!YOU WON!!!</h1>
+        <h3>please help us on anorther mission</h3>
     </div>
    
     <!-- connecting your js files -->
     <script src="script.js"></script>
+</div>
 </body>
 </html>

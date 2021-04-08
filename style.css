@@ -1,0 +1,44 @@
+
+body{
+  font-family: press start 2p;
+  color: white;
+  background-color: rgb(15, 10, 61);
+
+
+}
+h1 {
+font-size: 90px;
+}
+
+.canvas{
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin:auto;
+}
+
+.splash{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+
+}
+
+
+.youwon{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+.restartbtn{
+  position: absolute;
+
+  margin:;
+}
