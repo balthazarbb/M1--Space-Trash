@@ -1,6 +1,6 @@
-
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 body{
-  font-family: press start 2p;
+  font-family: "Press Start 2P";
   color: white;
   background-color: rgb(15, 10, 61);
 
@@ -36,9 +36,22 @@ font-size: 90px;
   align-content: center;
   text-align: center;
 }
-
+.button{
+  background-color: #E8562A;
+  border: turquoise;
+  font-size: 24px;
+}
 .restartbtn{
-  position: absolute;
-
-  margin:;
+  display: flex;
+  align-content: center;
+  margin-top: center;
+  margin-left: center;
+  width: 70px; 
+  height: 30px; 
+  text-align: center;
+  border: gray;
+  background-color: #E8562A;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
 }
